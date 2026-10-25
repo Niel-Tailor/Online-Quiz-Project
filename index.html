@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Knowledge Quiz</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Trivia Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>🧠 General Knowledge Quiz</h1>
+        <h1>Trivia Quiz</h1>
         <nav>
             <a href="index.html" class="active">Quiz</a>
             <a href="how-to.html">How To</a>
@@ -16,35 +16,79 @@
     </header>
 
     <main>
-        <section id="start-screen" class="screen active">
-            <h2>Welcome to the Quiz!</h2>
-            <p>Test your general knowledge across 5 randomly selected questions.</p>
-            <button id="start-btn" class="btn-primary">Start Quiz</button>
+        <!-- Selection Screen -->
+        <section id="selection-screen" class="screen active">
+            <h2>Choose your quiz</h2>
+            <form id="selection-form">
+                <label for="amount">Number of questions</label>
+                <select id="amount">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="">Any category</option>
+                    <option value="9">General Knowledge</option>
+                    <option value="10">Entertainment: Books</option>
+                    <option value="11">Entertainment: Film</option>
+                    <option value="12">Entertainment: Music</option>
+                    <option value="17">Science &amp; Nature</option>
+                    <option value="18">Science: Computers</option>
+                    <option value="19">Science: Mathematics</option>
+                    <option value="21">Sports</option>
+                    <option value="22">Geography</option>
+                    <option value="23">History</option>
+                    <option value="27">Animals</option>
+                </select>
+
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty">
+                    <option value="">Any difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <label for="type">Question type</label>
+                <select id="type">
+                    <option value="">Any type</option>
+                    <option value="multiple">Multiple choice</option>
+                    <option value="boolean">True / False</option>
+                </select>
+
+                <button type="submit" id="start-btn" class="btn">Start quiz</button>
+            </form>
+            <p id="loading-text" style="display:none;">Loading questions...</p>
+            <p id="error-text" style="display:none;"></p>
         </section>
 
+        <!-- Question Screen -->
         <section id="question-screen" class="screen">
-            <div class="progress-bar">
-                <span id="question-count"></span>
-            </div>
+            <p id="question-count"></p>
+            <p id="question-meta"></p>
             <h2 id="question-text"></h2>
-            <div id="options-container" class="options"></div>
-            <div class="btn-group">
-                <button id="next-btn" class="btn-primary" disabled>Next</button>
-                <button id="submit-btn" class="btn-secondary" style="display:none;">Submit Quiz</button>
-            </div>
+            <div id="options-container"></div>
+            <p id="selection-status"></p>
+            <button id="next-btn" class="btn" disabled>Next</button>
+            <button id="submit-btn" class="btn" style="display:none;" disabled>Submit quiz</button>
         </section>
 
+        <!-- Results Screen -->
         <section id="results-screen" class="screen">
-            <h2>🎉 Quiz Complete!</h2>
+            <h2>Quiz complete</h2>
             <p id="score-text"></p>
-            <h3>Review:</h3>
+            <h3>Review</h3>
             <div id="review-container"></div>
-            <button id="restart-btn" class="btn-primary">Take Quiz Again</button>
+            <button id="restart-btn" class="btn">Take quiz again?</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 General Knowledge Quiz — Built for Learning People - Project 1</p>
+        <p>&copy; Trivia Quiz -- Project 1: Learning People</p>
+        <p>Questions from <a href="https://opentdb.com/" target="_blank">Open Trivia Database</a></p>
     </footer>
 
     <script src="js/script.js"></script>
