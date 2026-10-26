@@ -1,125 +1,86 @@
-# 🧠 Open Trivia Quiz — Project 1
+# Open Trivia Quiz
 
-> An interactive, customisable online quiz powered by the **Open Trivia Database API**. Users select their preferred category, difficulty, question type, and number of questions — then get fresh questions live from the API every time.
+A simple online quiz built with HTML, CSS and JavaScript. You choose the topic, difficulty and number of questions, and the app loads fresh questions from the [Open Trivia Database](https://opentdb.com/).
 
----
+## Why I Built This
 
-## 🎯 Purpose
-This project demonstrates a full front-end web application built with **HTML5, CSS3, and vanilla JavaScript**, featuring real API integration, dynamic content loading, user input handling, and responsive design.
+I wanted to build a real website that uses an API, handles user input and works on any screen size. It's also fun to play!
 
-### Value to Users
-- ✅ **Customisable quiz** — choose exactly what you want to be tested on
-- ✅ **Fresh questions every time** — pulls live from a database of thousands
-- ✅ **No sign-up or API key required** — instant, free use
-- ✅ **Educational feedback** — see what you got right/wrong with context
-- ✅ **Fully responsive** — works seamlessly on phones, tablets, and desktops
-- ✅ **Accessible design** — high-contrast colours, clear typography, logical navigation
+## Features
 
----
+- Pick the number of questions (5 to 20)
+- Choose a category, difficulty and question type
+- New questions every time you play
+- See your score and review every answer at the end
+- Works on phones, tablets and computers
+- No sign-up or API key needed
 
-## 🛠️ Technologies Used
+## Built With
 
-| Technology | Purpose | Validation Status |
-|---|---|---|
-| **HTML5** | Semantic page structure, forms, navigation | ✅ Passed W3C Validator |
-| **CSS3** | Responsive layout, styling, accessibility | ✅ Passed Jigsaw Validator |
-| **Vanilla JavaScript (ES6+)** | API fetching, state management, scoring, interactivity | ✅ Passed JSHint — no issues |
-| **Open Trivia Database API** | Dynamic question source — no key required | ✅ Live & free service |
+- **HTML** for the page structure
+- **CSS** for the styling and responsive layout
+- **JavaScript** for fetching questions, scoring and the quiz logic
+- **Open Trivia Database API** for the questions
 
----
+## How to Use
 
-## 📁 File Structure
+1. Open `index.html` in your browser
+2. Choose your quiz options
+3. Click **Start Quiz**
+4. Pick an answer and click **Next**
+5. On the last question, click **Submit Quiz**
+6. See your score and review your answers
+7. Click **Take Quiz Again** to play another round
+
+## Project Files
+
+```
 online-quiz/
-├── index.html # Main app: selection form + quiz screens
-├── how-to.html # Instructions & evaluation guide
+├── index.html      # Main page (options form and quiz)
+├── how-to.html     # Instructions page
 ├── css/
-│ └── styles.css # All styling — single file, well organised
+│   └── styles.css  # All the styling
 ├── js/
-│ └── script.js # Full app logic + API integration
+│   └── script.js   # Quiz logic and API code
 ├── assets/
-│ └── images/ # Store graphics/icons here
-│ └── .gitkeep
-├── screenshots/ # Documentation images
-│ └── .gitkeep
-├── .gitignore # Excludes system/editor files from repo
-└── README.md # This file
-plaintext
+│   └── images/     # Images and icons
+├── screenshots/    # Screenshots for this README
+├── .gitignore
+└── README.md
+```
 
----
+## How the API Works
 
-## 🚀 Quick Start
+When you click **Start Quiz**, the app builds a web address from your choices, for example:
 
-### Run Locally
-1. **Download or clone** this repository
-2. **Open `index.html`** in any modern web browser (Chrome, Firefox, Safari, Edge)
-3. That’s it — **no server, no build tools, no installation required**
-
-### How to Use
-1. **Customise your quiz** using the dropdowns:
-   - Number of questions (5–20)
-   - Category (Any, General Knowledge, Science, History, and more)
-   - Difficulty (Any / Easy / Medium / Hard)
-   - Question Type (Any / Multiple Choice / True–False)
-2. Click **Start Quiz** — questions load live from the API
-3. **Select an answer** → click **Next**
-4. On the final question → click **Submit Quiz**
-5. Review your **score percentage** + full breakdown of every question
-6. Click **Take Quiz Again** to return to the selection form and try new preferences
-
----
-
-## 🔌 API Integration Details
-
-### About Open Trivia Database
-- **Provider:** [opentdb.com](https://opentdb.com/)
-- **Documentation:** [opentdb.com/api_config.php](https://opentdb.com/api_config.php)
-- **API Key Required?** ❌ **No — completely free public API**
-- **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- **Rate Limit:** 1 request every 5 seconds
-- **Max per request:** 50 questions
-
-### How It Works
-1. User submits the selection form → app builds a URL like:
+```
 https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple
-plaintext
-2. `fetch()` sends the request asynchronously
-3. Response is validated — friendly error messages appear if:
-- No questions match your selection
-- Too many requests too quickly
-- Invalid parameters sent
-4. HTML entities (special characters) are decoded for readability
-5. Correct answer is shuffled among options so position changes every time
+```
 
-### Response Codes Handled
-| Code | Meaning | User Message |
+It then fetches the questions from that address. If something goes wrong (for example, no questions match your choices), the app shows a friendly error message instead of breaking.
+
+The API is free, but it only allows one request every 5 seconds, so if you click too fast you may need to wait a moment.
+
+## Testing
+
+I checked my code with these tools:
+
+| Tool | What it checks | Result |
 |---|---|---|
-| 0 | ✅ Success | Quiz starts |
-| 1 | No results found | "Try fewer questions or change category" |
-| 2 | Invalid parameter | "Please check your selection" |
-| 5 | Rate limited | "Wait 5 seconds and try again" |
+| [W3C HTML Validator](https://validator.w3.org/) | HTML | Passed |
+| [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) | CSS | Passed |
+| [JSHint](https://jshint.com/) | JavaScript | Passed |
 
----
+I also tested by hand that:
 
-## ✅ Validation & Testing
+- The quiz loads questions from the API
+- You can't move on without choosing an answer
+- The score is calculated correctly
+- The review shows your answer and the correct answer
+- The quiz restarts properly
+- It works in Chrome, Firefox and Safari
+- It looks good on small and large screens
 
-### Code Quality
-| Tool | Result | Link |
-|---|---|---|
-| W3C HTML Validator | ✅ Pass — 0 errors | [validator.w3.org](https://validator.w3.org/) |
-| Jigsaw CSS Validator | ✅ Pass — 0 errors | [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/) |
-| JSHint JavaScript | ✅ Pass — no significant issues | [jshint.com](https://www.jshint.com/) |
+## Credits
 
-### Functionality Verified
-- [x] Form submits and triggers API fetch
-- [x] Loading message appears during API call
-- [x] Answers are shuffled — correct position changes every time
-- [x] Cannot proceed without selecting an answer
-- [x] Score calculation matches correct answers
-- [x] Review shows your answer + correct answer + category context
-- [x] Restart returns to selection form
-- [x] All internal links work correctly
-- [x] Cross-browser tested: Chrome, Firefox, Safari ✅
-- [x] Responsive tested: 320px (mobile) → 1200px+ (desktop) ✅
-- [x] API error states handled gracefully
-
----
+- Questions from the [Open Trivia Database](https://opentdb.com/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
